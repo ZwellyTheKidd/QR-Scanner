@@ -2,7 +2,7 @@ body{
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #f1f2f3;
+    background: whitesmoke-;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .container{
@@ -27,5 +27,18 @@ body{
 }
 .nav img{
     height: 3em;
+    border-radius: 0.5em;
+}
+
+.nav .menu{
+    padding-right: 2em;
+}
+.menu button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding-inline: 1.5em;
+    padding-block: 0.5em;
     border-radius: 0.5em;
 }
