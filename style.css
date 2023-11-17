@@ -1,19 +1,23 @@
-body{
+body {
     height: 100vh;
+    width: 100vw;
     margin: 0;
     padding: 0;
     background: whitesmoke-;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.container{
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.qr-reader{
+
+.qr-reader {
     width: 90%;
 }
-.nav{
+
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,19 +25,21 @@ body{
     padding-top: 0.5%;
     padding-inline: 4%;
     background: #FCCE41;
-    box-shadow: 1px 10px 54px -11px rgba(0,0,0,0.36);
--webkit-box-shadow: 1px 10px 54px -11px rgba(0,0,0,0.36);
--moz-box-shadow: 1px 10px 54px -11px rgba(0,0,0,0.36);
+    box-shadow: 1px 10px 54px -11px rgba(0, 0, 0, 0.36);
+    -webkit-box-shadow: 1px 10px 54px -11px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 1px 10px 54px -11px rgba(0, 0, 0, 0.36);
 }
-.nav img{
+
+.nav img {
     height: 3em;
     border-radius: 0.5em;
 }
 
-.nav .menu{
+.nav .menu {
     padding-right: 2em;
 }
-.menu button{
+
+.menu button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,4 +47,15 @@ body{
     padding-inline: 1.5em;
     padding-block: 0.5em;
     border-radius: 0.5em;
+}
+
+.hearder-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.hearder-txt h6 {
+    color: rgba(128, 128, 128, 0.489);
 }
