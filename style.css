@@ -14,11 +14,27 @@ body {
 }
 
 .qr-reader {
-    width: 90%;
+    width: 30em;
+    color: #e7b726;
+}
+
+.qr-reader button {
+    padding-inline: 1.5em;
+    padding-block: 0.5em;
+    border-radius: 0.5em;
+    background-color: rgb(4, 74, 100);
+    color: white;
+}
+
+.qr-reader button:hover {
+    box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
 }
 
 .nav {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
@@ -37,6 +53,9 @@ body {
 
 .nav .menu {
     padding-right: 2em;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
 }
 
 .menu button {
@@ -49,6 +68,29 @@ body {
     border-radius: 0.5em;
 }
 
+.menu .scan:hover {
+    padding: 0.6em 1.6em;
+    box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+}
+
+.menu .history:hover {
+    padding: 0.6em 1.6em;
+    box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+}
+
+.menu .favorite:hover {
+    padding: 0.6em 1.6em;
+    box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 1px 6px 8px -4px rgba(0, 0, 0, 0.64);
+}
+
+
+
 .hearder-txt {
     display: flex;
     justify-content: center;
@@ -57,5 +99,23 @@ body {
 }
 
 .hearder-txt h6 {
-    color: rgba(128, 128, 128, 0.489);
+    color: rgba(128, 128, 128, 0.304);
+}
+
+.hidden{
+    display: none;
+}
+
+
+/* // ---------------------------------------------------------------- */
+
+.qr-result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 5em;
+    gap: 0.5em;
+    margin-top: 3em;
+    background: gray;
 }
