@@ -20,7 +20,7 @@
                     ++countResult;
                     lastResult=decodeText;
 
-                    alert("Your QR is :" + decodeText,decodeResult)
+                    alert(decodeText,decodeResult)
 
                     myqr.innerHTML=`you scan ${countResult} : ${decodeText}`
                     
