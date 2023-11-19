@@ -17,3 +17,4 @@ domReady(function () {
     var htmlscanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 })
     htmlscanner.render(onScanSuccess)
 })
+
