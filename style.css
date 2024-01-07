@@ -113,6 +113,7 @@ body {
 
 .qr-result {
     display: flex;
+    width: 100%;
     flex-direction: column;
     padding-inline: 5em;
     margin-top: 3em;
