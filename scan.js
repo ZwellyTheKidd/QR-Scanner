@@ -18,3 +18,52 @@ domReady(function () {
     htmlscanner.render(onScanSuccess)
 })
 
+
+
+// ==================================
+// init DOM elements
+const scanElment = document.getElementById('scan');
+const historyElement = document.getElementById('ht-list');
+const favoriteElement = document.getElementById('fv-list');
+
+
+
+// hide all
+function hideDivs() {
+    historyElement.classList.add('hidden')
+    scanElment.classList.add('hidden')
+    favoriteElement.classList.add('hidden')
+}
+
+// show scan
+function showScan() {
+    hideDivs()
+    scanElment.classList.remove('hidden')
+}
+
+
+// show history
+function showHistory() {
+
+    hideDivs()
+    historyElement.classList.remove('hidden')
+}
+
+// show favorites 
+function showFavorite() {
+    hideDivs()
+    favoriteElement.classList.remove('hidden')
+}
+
+
+// run this only oce
+document.addEventListener('DOMContentLoaded', function () {
+    // hide everything
+
+    // show the scan
+    showScan();
+
+}, false);
+
+
+
