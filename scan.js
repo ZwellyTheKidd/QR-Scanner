@@ -12,7 +12,7 @@ domReady(function () {
     myqr = document.getElementById('qr-result')
     //if qr code found
     function onScanSuccess(decodeText) {
-        myqr.innerHTML = `<a href="${decodeText} target="_blank" rel="noopener noreferrer">${decodeText}</a>`;
+        myqr.innerHTML = `<a href="${decodeText}" target="_blank">${decodeText}</a>`;
         addLink();
     }
     //render your camera
