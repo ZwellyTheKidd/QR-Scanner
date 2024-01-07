@@ -1,4 +1,5 @@
 // check if dom is ready
+let myqr ;
 function domReady(fn) {
     if (document.readyState == "complete" || document.readyState == "interactive") {
         setTimeout(fn, 1)
@@ -8,10 +9,11 @@ function domReady(fn) {
     }
 }
 domReady(function () {
-    var myqr = document.getElementById('qr-result')
+    myqr = document.getElementById('qr-result')
     //if qr code found
     function onScanSuccess(decodeText) {
-        myqr.innerHTML = `<a href="${decodeText}">${decodeText}</a>`
+        myqr.innerHTML = `<a href="${decodeText}">${decodeText}</a>`,
+        addLink();
     }
     //render your camera
     var htmlscanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 })
@@ -101,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 let globalID = 0;
+const user= [];
 
 
 // add qr link
@@ -108,17 +111,21 @@ function addLink() {
 
     globalID = globalID + 1
 
-    user.push({ id: globalID, type: transactionType, amount: transactionAmount, detail: transactionDetail })
+    user.push({
+        id: globalID,
+        web: "Web URL",
+        date: new Date().toLocaleDateString(),
+        link: myqr.innerHTML
+      });
 
     saveToStorage()
 }
 
 
-
-
 function saveToStorage() {
-    localStorage.setItem('history', JSON.stringify(user))
+    localStorage.setItem('history', JSON.stringify(user));
 }
+
 function readFromStorage() {
     if (localStorage.getItem('history')) {
         state.transactions = JSON.parse(localStorage.getItem('history'))
