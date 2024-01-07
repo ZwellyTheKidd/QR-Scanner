@@ -12,7 +12,7 @@ domReady(function () {
     myqr = document.getElementById('qr-result')
     //if qr code found
     function onScanSuccess(decodeText) {
-        myqr.innerHTML = `<a href="${decodeText}">${decodeText}</a>`,
+        myqr.innerHTML = `<a href="${decodeText} target="_blank" rel="noopener noreferrer">${decodeText}</a>`;
         addLink();
     }
     //render your camera
@@ -72,7 +72,10 @@ function showHistory() {
         scanButton.classList.remove('hidden')
         favoriteBtn.classList.remove('hidden')
 
+        readFromStorage()
+        console.log(user);
         display()
+
     }, 1000); 
 }
 
@@ -113,12 +116,34 @@ function addLink() {
 
     globalID = globalID + 1
 
-    user.push({
-        id: globalID,
-        web: "Web URL",
-        date: new Date().toLocaleDateString(),
-        link: myqr.innerHTML
-      });
+    
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+    });
+
+     // Check if the link already exists in the user array
+     const existingLinkIndex = user.findIndex(entry => entry.link === myqr.innerHTML);
+
+     if (existingLinkIndex !== -1) {
+         // If the link exists, update the existing entry
+         user[existingLinkIndex].date = formattedDate;
+     } else {
+         // If the link doesn't exist, add a new entry
+         globalID = globalID + 1;
+         user.push({
+             id: globalID,
+             web: "Web URL",
+             date: formattedDate,
+             link: myqr.innerHTML
+         });
+     }
 
     saveToStorage()
 }
@@ -144,13 +169,13 @@ function display() {
                         d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
                 </svg>
 
-                <div>Web Url</div>
+                <div>${user[i].web}</div>
             </div>
             <div class="date" id="date">
-                10 Oct 2023 07:25:51
+            ${user[i].date}
             </div>
             <div class="link" id="link">
-                <a href="#">http://127.0.0.1:5501/index.html</a>
+                ${user[i].link}
                 <div class="opt-icon">
                     <svg style="width: 1.5em;height:1.5em" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
