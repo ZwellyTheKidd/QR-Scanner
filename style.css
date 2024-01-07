@@ -100,7 +100,7 @@ body {
 }
 
 .hearder-txt h6 {
-    color: rgba(128, 128, 128, 0.304);
+    color: rgba(128, 128, 128, 0.13);
 }
 
 .hidden {
@@ -115,7 +115,6 @@ body {
     flex-direction: column;
     padding-inline: 5em;
     margin-top: 3em;
-    margin-bottom: 3em;
     gap: 1.2em;
 }
 

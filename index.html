@@ -18,8 +18,8 @@
                 alt="logo">
         </div>
         <div class="menu">
-            <div id="btn-scan" class="hidden">
-                <button class="scan">
+            <div id="btn-scan">
+                <button class="scan" onclick="showScan()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-qr-code-scan" viewBox="0 0 16 16">
                         <path
@@ -34,7 +34,7 @@
                 </button>
             </div>
             <div id="btn-history">
-                <button class="history">
+                <button class="history" onclick="showHistory()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-clock-history" viewBox="0 0 16 16">
                         <path
@@ -47,7 +47,7 @@
                 </button>
             </div>
             <div id="btn-favorite">
-                <button class="favorite">
+                <button class="favorite" onclick="showFavorite()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-star" viewBox="0 0 16 16">
                         <path
@@ -61,11 +61,7 @@
 
     <!-- scan result -->
     <div id="qr-result" class="qr-result">
-        <div class="hearder-txt">
-            <h1>Result</h1>
-            <h6>-by ZWELLY SITHOLE</h6>
-        </div>
-
+       
     </div>
 
     <!-- scan qr ui -->

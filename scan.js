@@ -25,6 +25,9 @@ domReady(function () {
 const scanElment = document.getElementById('scan');
 const historyElement = document.getElementById('ht-list');
 const favoriteElement = document.getElementById('fv-list');
+const scanResult = document.getElementById('qr-result');
+
+
 
 
 
@@ -33,12 +36,14 @@ function hideDivs() {
     historyElement.classList.add('hidden')
     scanElment.classList.add('hidden')
     favoriteElement.classList.add('hidden')
+    scanResult.classList.add('hidden')
 }
 
 // show scan
 function showScan() {
     hideDivs()
     scanElment.classList.remove('hidden')
+    scanResult.classList.remove('hidden')
 }
 
 
