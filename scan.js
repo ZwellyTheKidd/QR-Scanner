@@ -41,23 +41,34 @@ function hideDivs() {
 
 // show scan
 function showScan() {
-    hideDivs()
-    scanElment.classList.remove('hidden')
-    scanResult.classList.remove('hidden')
+
+    setTimeout(function() {
+        hideDivs()
+        scanElment.classList.remove('hidden')
+        scanResult.classList.remove('hidden')
+    }, 1000); 
+  
 }
 
 
 // show history
 function showHistory() {
 
-    hideDivs()
-    historyElement.classList.remove('hidden')
+    setTimeout(function() {
+        hideDivs()
+        historyElement.classList.remove('hidden')
+    }, 1000); 
+ 
 }
 
 // show favorites 
 function showFavorite() {
-    hideDivs()
-    favoriteElement.classList.remove('hidden')
+
+    setTimeout(function() {
+        hideDivs()
+        favoriteElement.classList.remove('hidden')
+    }, 1000); 
+  
 }
 
 
