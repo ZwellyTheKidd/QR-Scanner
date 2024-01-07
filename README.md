@@ -20,7 +20,7 @@ JavaScript
 ## Getting Started
 
 ```
-git clone https://github.com/your-username/qr-scanner-app.git
+git clone https://github.com/ZwellyTheKidd/QR-Scanner-App
 ```
 Open the index.html file in a web browser.
 
