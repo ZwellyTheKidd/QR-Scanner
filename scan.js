@@ -217,7 +217,7 @@ function editLink(id) {
     // Check if the link with the given ID exists
     if (linkIndex !== -1) {
         // Prompt the user to enter a new name
-        const newWeb = prompt('Enter web name:');
+        const newWeb = prompt('Enter Website title :');
 
         // Check if the user entered a new name
         if (newWeb !== null) {
@@ -264,7 +264,10 @@ function displayHistory() {
                         d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
                 </svg>
 
-                <div>${user[i].web}</div>
+                <div>
+                ${isInFavorite ? (favorite.find(link => link.id === user[i].id)?.web || user[i].web) : user[i].web}
+            </div>
+
             </div>
             <div class="date" id="date">
             ${user[i].date}
