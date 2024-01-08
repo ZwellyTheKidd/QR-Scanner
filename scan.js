@@ -1,5 +1,5 @@
 // check if dom is ready
-let myqr ;
+let myqr;
 function domReady(fn) {
     if (document.readyState == "complete" || document.readyState == "interactive") {
         setTimeout(fn, 1)
@@ -53,37 +53,38 @@ function hideDivs() {
 // show scan
 function showScan() {
 
-    setTimeout(function() {
+    setTimeout(function () {
         hideDivs()
         scanElment.classList.remove('hidden')
         scanResult.classList.remove('hidden')
         historyBtn.classList.remove('hidden')
         favoriteBtn.classList.remove('hidden')
-    }, 1000); 
+    }, 1000);
 }
 
 
 // show history
 function showHistory() {
 
-    setTimeout(function() {
-       
+    setTimeout(function () {
+
         hideDivs()
         historyElement.classList.remove('hidden')
         scanButton.classList.remove('hidden')
         favoriteBtn.classList.remove('hidden')
-
-        readFromStorage()
-        displayHistory()
+        
+        readFromFavorite();
+        readFromStorage();
+        displayHistory();
         console.log(user);
 
-    }, 1000); 
+    }, 1000);
 }
 
 // show favorites 
 function showFavorite() {
 
-    setTimeout(function() {
+    setTimeout(function () {
         hideDivs()
         favoriteElement.classList.remove('hidden')
         scanButton.classList.remove('hidden')
@@ -93,8 +94,8 @@ function showFavorite() {
         displayFav();
         console.log(favorite);
 
-    }, 1000); 
-  
+    }, 1000);
+
 }
 
 
@@ -114,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 let globalID = 0;
-let user= [];
-let favorite= [];
+let user = [];
+let favorite = [];
 
 
 
@@ -124,7 +125,7 @@ function addLink() {
 
     globalID = globalID + 1
 
-    
+
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString('en-US', {
         day: 'numeric',
@@ -136,22 +137,22 @@ function addLink() {
         hour12: false
     });
 
-     // Check if the link already exists in the user array
-     const existingLinkIndex = user.findIndex(entry => entry.link === myqr.innerHTML);
+    // Check if the link already exists in the user array
+    const existingLinkIndex = user.findIndex(entry => entry.link === myqr.innerHTML);
 
-     if (existingLinkIndex !== -1) {
-         // If the link exists, update the existing entry
-         user[existingLinkIndex].date = formattedDate;
-     } else {
-         // If the link doesn't exist, add a new entry
-         globalID = globalID + 1;
-         user.push({
-             id: globalID,
-             web: "Web URL",
-             date: formattedDate,
-             link: myqr.innerHTML
-         });
-     }
+    if (existingLinkIndex !== -1) {
+        // If the link exists, update the existing entry
+        user[existingLinkIndex].date = formattedDate;
+    } else {
+        // If the link doesn't exist, add a new entry
+        globalID = globalID + 1;
+        user.push({
+            id: globalID,
+            web: "Web URL",
+            date: formattedDate,
+            link: myqr.innerHTML
+        });
+    }
 
     saveToStorage()
 }
@@ -160,13 +161,34 @@ function addFavorite(id) {
     const favoriteLink = user.find(link => link.id === id);
 
     if (favoriteLink) {
-        favorite.push({
-            id: favoriteLink.id,
-            web: favoriteLink.web,
-            date: favoriteLink.date,
-            link: favoriteLink.link
-        });
+        const indexInFavorite = favorite.findIndex(link => link.id === id);
 
+        if (indexInFavorite === -1) {
+            // Link is not in favorites, add it
+            favorite.push({
+                id: favoriteLink.id,
+                web: favoriteLink.web,
+                date: favoriteLink.date,
+                link: favoriteLink.link
+            });
+
+            // Update the icon background color to yellow
+            const starIcon = document.getElementById(`starIcon-${id}`);
+            if (starIcon) {
+                starIcon.classList.add('favorited');
+            }
+        } else {
+            // Link is already in favorites, remove it
+            favorite.splice(indexInFavorite, 1);
+
+            // Update the icon background color to default (white)
+            const starIcon = document.getElementById(`starIcon-${id}`);
+            if (starIcon) {
+                starIcon.classList.remove('favorited');
+            }
+        }
+
+        // Save changes to favorites
         saveToFavorite();
     }
 }
@@ -203,6 +225,7 @@ function editLink(id) {
             favorite[linkIndex].web = newWeb;
 
             // Save the updated data to storage and display the updated list
+            favorite.reverse();
             saveToFavorite();
             showFavorite();
         }
@@ -217,7 +240,18 @@ function displayHistory() {
 
     linkHistory.innerHTML = ''
 
+    linkHistory.innerHTML += `
+    
+    <div class="hearder-txt">
+    <h1>History</h1>
+    <h6>-by ZWELLY SITHOLE</h6>
+    </div>
+`
+
+
     for (let i = 0; i < user.length; i++) {
+
+        const isInFavorite = favorite.some(link => link.id === user[i].id);
 
         linkHistory.innerHTML += `
         <div class="link-box">
@@ -239,8 +273,8 @@ function displayHistory() {
                 ${user[i].link}
                 <div class="opt-icon">
                 
-                    <svg onclick="addFavorite(${user[i].id})"  style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                    <svg onclick="addFavorite(${user[i].id})" id="starIcon-${user[i].id}"  style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-star ${isInFavorite ? 'favorited' : ''}" viewBox="0 0 16 16">
                         <path
                             d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
                     </svg>
@@ -268,6 +302,14 @@ function displayFav() {
 
 
     linkFavorite.innerHTML = '';
+
+
+    linkFavorite.innerHTML += `
+    <div class="hearder-txt">
+    <h1>Favorite</h1>
+    <h6>-by ZWELLY SITHOLE</h6>
+</div>
+`
 
     for (let i = 0; i < favorite.length; i++) {
 

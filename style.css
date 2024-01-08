@@ -155,3 +155,16 @@ body {
 
 /* // ---------------------------------------------------------------- */
 
+
+.bi-star[data-id] {
+    background-color: white; /* Default background color */
+}
+
+.bi-star[data-id]:hover {
+    background-color: yellow; /* Background color on hover */
+}
+
+.favorited {
+    background-color: yellow; /* Background color when favorited */
+}
+
