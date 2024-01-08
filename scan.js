@@ -209,6 +209,7 @@ function display() {
 
 
 function saveToStorage() {
+    user.reverse();
     localStorage.setItem('history', JSON.stringify(user));
 }
 
