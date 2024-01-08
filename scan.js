@@ -313,7 +313,9 @@ function displayFav() {
 </div>
 `
 
-    for (let i = 0; i < favorite.length; i++) {
+const reversedUser = [...favorite].reverse();
+
+    for (let i = 0; i < reversedUser.length; i++) {
 
         linkFavorite.innerHTML += `
         <div class="link-box">
@@ -326,15 +328,15 @@ function displayFav() {
                     d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
             </svg>
 
-            <div>${favorite[i].web}</div>
+            <div>${reversedUser[i].web}</div>
         </div>
         <div class="date" id="date">
-        ${favorite[i].date}
+        ${reversedUser[i].date}
         </div>
         <div class="link" id="link">
-        ${favorite[i].link}
+        ${reversedUser[i].link}
             <div class="opt-icon">
-                <svg onclick="editLink(${favorite[i].id})" style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                <svg onclick="editLink(${reversedUser[i].id})" style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -342,7 +344,7 @@ function displayFav() {
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                 </svg>
 
-                <svg onclick="removeFavorite(${favorite[i].id})" style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                <svg onclick="removeFavorite(${reversedUser[i].id})" style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                     <path
                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
