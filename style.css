@@ -2,7 +2,7 @@ body {
     height: 100vh;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 0 5em 0;
     background: #F5F2EF;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     overflow-y: scroll;
