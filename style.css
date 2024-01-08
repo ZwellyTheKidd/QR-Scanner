@@ -172,4 +172,7 @@ body {
     /* Your active styles go here */
     background: yellow; /* Example: Change the fill color to yellow on active */
 }
+.bi-trash:active{
+    background: red;
+}
 
