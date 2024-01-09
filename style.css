@@ -112,7 +112,7 @@ body {
 .qr-result {
     display: flex;
     flex-direction: column;
-    padding-inline: 5em;
+    padding-inline: 3em;
     margin-top: 3em;
     gap: 1.2em;
 }
@@ -122,7 +122,7 @@ body {
     flex-direction: column;
     background: white;
     border-radius: 1em;
-    padding-inline: 5em;
+    padding-inline: 2em;
     padding-block: 0.8em;
     gap: 0.2em;
 
@@ -133,8 +133,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    word-wrap: break-word;
+    position: relative;
+    flex-wrap: wrap;
 }
-
 .link-name {
     display: flex;
     flex-direction: row;
@@ -144,8 +146,7 @@ body {
 
 .opt-icon {
     display: flex;
-    gap: 2em;
-    margin-right: -3em;
+    gap: 1.5em; 
 }
 
 .date {
@@ -175,4 +176,27 @@ body {
 .bi-trash:active{
     background: red;
 }
+
+/* // ---------------------------------------------------------------- */
+@media (max-width: 768px){
+    .link {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        word-wrap: break-word;
+    }
+    .qr-result {
+        padding-inline: 1em;
+    }
+    .link-box {
+        padding-inline: 1em;
+    }
+    .opt-icon {
+        margin-top: 1em;
+    }
+
+}
+
+
+
 

@@ -272,7 +272,8 @@ function displayHistory() {
             ${reversedUser[i].date}
             </div>
             <div class="link" id="link">
-                ${reversedUser[i].link}
+            ${reversedUser[i].link}
+               
                 <div class="opt-icon">
                 
                     <svg onclick="addFavorite(${reversedUser[i].id})" id="starIcon-${reversedUser[i].id}"  style="width: 1.5em;height:1.5em;cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
