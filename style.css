@@ -25,6 +25,7 @@ body {
     border-radius: 0.5em;
     background-color: rgb(4, 74, 100);
     color: white;
+    margin-bottom: 2em;
 }
 
 .qr-reader button:hover {
